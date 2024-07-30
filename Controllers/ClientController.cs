@@ -12,10 +12,13 @@ namespace MinimalAPIMongo.Controllers
     public class ClientController : ControllerBase
     {
         private readonly IMongoCollection<Client> _client;
+        private readonly IMongoCollection<User> _user;
 
         public ClientController(MongoDbService mongoDbService)
         {
             _client = mongoDbService.GetDatabase.GetCollection<Client>("client");
+            _user = mongoDbService.GetDatabase.GetCollection<User>("user");
+
 
         }
 

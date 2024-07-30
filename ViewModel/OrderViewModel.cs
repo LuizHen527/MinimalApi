@@ -1,10 +1,11 @@
-﻿using MongoDB.Bson;
+﻿using MinimalAPIMongo.Domains;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System.Text.Json.Serialization;
 
-namespace MinimalAPIMongo.Domains
+namespace MinimalAPIMongo.ViewModel
 {
-    public class Order
+    public class OrderViewModel
     {
         [BsonId]
         [BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
@@ -20,12 +21,15 @@ namespace MinimalAPIMongo.Domains
         [JsonIgnore]
         public List<string>? ProductId { get; set; }
 
+        [BsonIgnore]
+        [JsonIgnore]
         public virtual ICollection<Product>? Products { get; set; } = new List<Product>();
 
         [BsonElement("clientId")]
-        [JsonIgnore]
         public string? ClientId { get; set; }
 
+        [BsonIgnore]
+        [JsonIgnore]
         public virtual Client? Client { get; set; }
     }
 }

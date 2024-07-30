@@ -43,3 +43,4 @@ C:\Users\38606125814\Desktop\Projetos\MinimalAPI\MinimalAPIMongo\obj\Debug\net8.
 C:\Users\38606125814\Desktop\Projetos\MinimalAPI\MinimalAPIMongo\obj\Debug\net8.0\MinimalAPIMongo.pdb
 C:\Users\38606125814\Desktop\Projetos\MinimalAPI\MinimalAPIMongo\obj\Debug\net8.0\MinimalAPIMongo.genruntimeconfig.cache
 C:\Users\38606125814\Desktop\Projetos\MinimalAPI\MinimalAPIMongo\obj\Debug\net8.0\ref\MinimalAPIMongo.dll
+C:\Users\38606125814\Desktop\Projetos\MinimalAPI\MinimalAPIMongo\obj\Debug\net8.0\MinimalAPIMongo.sourcelink.json
