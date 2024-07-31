@@ -20,7 +20,7 @@ namespace MinimalAPIMongo.Domains
         [JsonIgnore]
         public List<string>? ProductId { get; set; }
 
-        public virtual ICollection<Product>? Products { get; set; } = new List<Product>();
+        public virtual List<Product>? Products { get; set; } = new List<Product>();
 
         [BsonElement("clientId")]
         [JsonIgnore]

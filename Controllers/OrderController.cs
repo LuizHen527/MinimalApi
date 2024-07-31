@@ -40,7 +40,7 @@ namespace MinimalAPIMongo.Controllers
 
                 var client = await _client.Find(x => x.Id == order.ClientId).FirstOrDefaultAsync();
 
-                if (client != null)
+                if (client == null)
                 {
                     return NotFound();
                 }
@@ -64,6 +64,19 @@ namespace MinimalAPIMongo.Controllers
             try
             {
                 var orders = await _order.Find(FilterDefinition<Order>.Empty).ToListAsync();
+
+                //Verifica se cada pedido possui id de produtos, depois verifica se esses ids estao na collection de produtos
+                //depois coloca os produtos nos pedidos
+                foreach (var order in orders)
+                {
+                    if(order.ProductId != null)
+                    {
+                        var filter = Builders<Product>.Filter.In(x => x.Id, order.ProductId);
+
+                        order.Products = await _product.Find(filter).ToListAsync();
+                    }
+                }
+
                 return Ok(orders);
             }
             catch (Exception e)
@@ -90,10 +103,15 @@ namespace MinimalAPIMongo.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
-        public async Task<ActionResult> Put(string id, Order orderUpdated)
+        public async Task<ActionResult> Put(string id, OrderViewModel orderViewModel)
         {
             try
             {
+                var order = _order.Find(x => x.Id == id).FirstOrDefault();
+
+                order.Status = orderViewModel.Status;
+
+                await _order.ReplaceOneAsync(x => x.Id == id, order);
                 return Ok();
 
             }

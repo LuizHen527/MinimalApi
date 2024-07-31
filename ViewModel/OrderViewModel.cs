@@ -18,12 +18,12 @@ namespace MinimalAPIMongo.ViewModel
         public string? Status { get; set; }
 
         [BsonElement("productId")]
-        [JsonIgnore]
+        
         public List<string>? ProductId { get; set; }
 
         [BsonIgnore]
         [JsonIgnore]
-        public virtual ICollection<Product>? Products { get; set; } = new List<Product>();
+        public virtual List<Product>? Products { get; set; } = new List<Product>();
 
         [BsonElement("clientId")]
         public string? ClientId { get; set; }
